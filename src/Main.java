@@ -300,6 +300,49 @@ class platoPrincipal extends JFrame{
             }
         });
 
+        añadir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                File fileFactura= new File("/home/nescanpac/IdeaProjects/DONGIVANNI/Ficheros/Factura.txt");
+                File filePrecio= new File("/home/nescanpac/IdeaProjects/DONGIVANNI/Ficheros/precios.txt");
+                FileWriter escribeFactura=null;
+                FileWriter escribePrecio= null;
+
+                try {
+                    escribePrecio= new FileWriter(filePrecio);
+                    escribeFactura= new FileWriter(fileFactura);
+                    if(sopaCastellana.isSelected()){
+                        escribeFactura.write("1 Sopa Castellana......... 11.19€");
+                        escribePrecio.write("11.19");
+                    }
+                    if(spageti.isSelected()){
+                        escribeFactura.write("1 Spaguettis......... 9.14€");
+                        escribePrecio.write("9.14");
+                    }
+                    if(canelones.isSelected()){
+                        escribeFactura.write("1 Canelones......... 12.00€");
+                        escribePrecio.write("12.00");
+                    }
+                    if(lasaña.isSelected()){
+                        escribeFactura.write("1 Lasaña......... 8.33€");
+                        escribePrecio.write("8.33");
+                    }
+                    if(macarrones.isSelected()){
+                        escribeFactura.write("1 Macarrones......... 7.45€");
+                        escribePrecio.write("7.45");
+                    }
+
+                    escribeFactura.close();
+                    escribePrecio.close();
+                }
+                catch(IOException exception){
+                    System.out.println(exception.getMessage());
+                }
+
+                dispose();
+            }
+        });
+
 
 
 
@@ -384,6 +427,13 @@ class VentanaPrinci extends JFrame{
             }
         });
 
+        botPlatosPrincipales.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                abrirPlatoPrincipal();
+            }
+        });
+
         muestraTiquets.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -393,7 +443,7 @@ class VentanaPrinci extends JFrame{
                     BufferedReader lectorFacturas= new BufferedReader(leeFactura);
                     String cadena=lectorFacturas.readLine();
                     while (cadena!=null){
-                        textoRecibo.setText("FACTURA \n"+cadena);
+                        textoRecibo.setText(textoRecibo.getText()+"\n"+cadena);
                         cadena= lectorFacturas.readLine();
                     }
                     lectorFacturas.close();
@@ -403,6 +453,8 @@ class VentanaPrinci extends JFrame{
                 }
             }
         });
+
+
 
         panelCentral.setLayout(null);
         panelCentral.add(textoRecibo);
@@ -430,8 +482,11 @@ class VentanaPrinci extends JFrame{
 public void abrirEntrantes(){
         Entrantes entra1= new Entrantes();
         entra1.setVisible(true);
+}
 
-
+public void abrirPlatoPrincipal(){
+        platoPrincipal plat= new platoPrincipal();
+        plat.setVisible(true);
 }
 
 }
@@ -443,6 +498,6 @@ public void abrirEntrantes(){
 
 public class Main {
     public static void main(String[] args) {
-     platoPrincipal plas= new platoPrincipal();
+     VentanaPrinci vent= new VentanaPrinci();
     }
 }
