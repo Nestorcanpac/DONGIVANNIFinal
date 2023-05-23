@@ -246,7 +246,7 @@ class platoPrincipal extends JFrame{
                 imaLasaña.setVisible(false);
                 imaSpagueti.setVisible(false);
                 imaSopa.setVisible(true);
-                precioPlatoPrincipal.setText(precioPlatoPrincipal.getText()+" 8.33€");
+                precioPlatoPrincipal.setText(precioPlatoPrincipal.getText()+" 11.19€");
             }
         });
         spageti.addActionListener(new ActionListener() {
@@ -258,7 +258,7 @@ class platoPrincipal extends JFrame{
                 imaLasaña.setVisible(false);
                 imaSpagueti.setVisible(true);
                 imaSopa.setVisible(false);
-                precioPlatoPrincipal.setText(precioPlatoPrincipal.getText()+" 14.00€");
+                precioPlatoPrincipal.setText(precioPlatoPrincipal.getText()+" 9.14€");
             }
         });
         canelones.addActionListener(new ActionListener() {
@@ -270,7 +270,7 @@ class platoPrincipal extends JFrame{
                 imaLasaña.setVisible(false);
                 imaSpagueti.setVisible(false);
                 imaSopa.setVisible(false);
-                precioPlatoPrincipal.setText(precioPlatoPrincipal.getText()+" 14.00€");
+                precioPlatoPrincipal.setText(precioPlatoPrincipal.getText()+" 12.00€");
             }
         });
 
@@ -296,9 +296,12 @@ class platoPrincipal extends JFrame{
                 imaLasaña.setVisible(false);
                 imaSpagueti.setVisible(false);
                 imaSopa.setVisible(false);
-                precioPlatoPrincipal.setText(precioPlatoPrincipal.getText()+" 14.00€");
+                precioPlatoPrincipal.setText(precioPlatoPrincipal.getText()+" 7.45€");
             }
         });
+
+
+
 
 
         panel.setLayout(null);
