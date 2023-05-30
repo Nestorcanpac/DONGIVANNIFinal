@@ -14,16 +14,18 @@ import java.io.IOException;
 public class Postres extends JFrame {
 
     public Postres() {
-        setSize(750, 400);
-        setVisible(true);
-        setTitle("Postre");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setResizable(false);
-        setLocationRelativeTo(null);
-        Font fuentePrincipal = new Font("Arial", Font.ITALIC, 19);
-        JPanel panel = new JPanel();
+        setSize(750, 400);//Tamaño de ventana
+        setVisible(true);//La ventana es visible
+        setTitle("Postre");//Titulo de la ventana
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//Comando para cuando cierres la ventana
+        setResizable(false);//No se puede redimensionar
+        setLocationRelativeTo(null);//Posicion de la ventana al ejecutar
+        Font fuentePrincipal = new Font("Arial", Font.ITALIC, 19);//Fuente Principal
+        JPanel panel = new JPanel();//Asignacion del panel principal
         setContentPane(panel);
+        setIconImage(new ImageIcon("/home/nescanpac/IdeaProjects/DONGIVANNI/Fotos_Dongiovanni/Logo.jpg").getImage());//Imagen de icono de la ventana
 
+        //Creacion de los radio Button de los platos y el Button Group
         MyRadioButton tiramisu = new MyRadioButton("TIRAMISÚ", 80, 50, 190, 50);
         tiramisu.setFont(fuentePrincipal);
         MyRadioButton flan = new MyRadioButton("FLAN", 80, 100, 150, 50);
@@ -41,6 +43,7 @@ public class Postres extends JFrame {
         group.add(natillas);
         group.add(helado);
 
+        //Creación de las imagenes
         MyImageLabel imaTiramisu = new MyImageLabel("/home/nescanpac/IdeaProjects/DONGIVANNI/Fotos_Dongiovanni/Postres/Tiramisú.jpeg", 450, 60, 200, 200);
         imaTiramisu.setVisible(false);
         MyImageLabel imaFlan = new MyImageLabel("/home/nescanpac/IdeaProjects/DONGIVANNI/Fotos_Dongiovanni/Postres/flan-de-vainilla.jpg", 450, 60, 200, 200);
@@ -52,6 +55,7 @@ public class Postres extends JFrame {
         MyImageLabel imaHelado = new MyImageLabel("/home/nescanpac/IdeaProjects/DONGIVANNI/Fotos_Dongiovanni/Postres/gelats.jpg", 450, 60, 200, 200);
         imaHelado.setVisible(false);
 
+        //Creacion de los textos para elegir opccion y el boton añadir
         String s1 = "Precio:";
         MyLabel precioPostre = new MyLabel(s1, 450, 260, 150, 50);
         Font fuentePrecio = new Font("Arial", Font.BOLD, 20);
@@ -64,7 +68,8 @@ public class Postres extends JFrame {
 
         tiramisu.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent actionEvent) {
+            public void actionPerformed(ActionEvent actionEvent) {//Accion de boton comida
+                //Se hace visible la foto de la comida seleccionada y las otras se hacen invisibles
                 precioPostre.setText(s1);
                 imaTiramisu.setVisible(true);
                 imaFlan.setVisible(false);
@@ -76,7 +81,8 @@ public class Postres extends JFrame {
         });
         flan.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent actionEvent) {
+            public void actionPerformed(ActionEvent actionEvent) {//Accion de boton comida
+                //Se hace visible la foto de la comida seleccionada y las otras se hacen invisibles
                 precioPostre.setText(s1);
                 imaTiramisu.setVisible(false);
                 imaFlan.setVisible(true);
@@ -88,7 +94,8 @@ public class Postres extends JFrame {
         });
         coulant.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent actionEvent) {
+            public void actionPerformed(ActionEvent actionEvent) {//Accion de boton comida
+                //Se hace visible la foto de la comida seleccionada y las otras se hacen invisibles
                 precioPostre.setText(s1);
                 imaTiramisu.setVisible(false);
                 imaFlan.setVisible(false);
@@ -100,7 +107,8 @@ public class Postres extends JFrame {
         });
         natillas.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent actionEvent) {
+            public void actionPerformed(ActionEvent actionEvent) {//Accion de boton comida
+                //Se hace visible la foto de la comida seleccionada y las otras se hacen invisibles
                 precioPostre.setText(s1);
                 imaTiramisu.setVisible(false);
                 imaFlan.setVisible(false);
@@ -112,7 +120,8 @@ public class Postres extends JFrame {
         });
         helado.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent actionEvent) {
+            public void actionPerformed(ActionEvent actionEvent) {//Accion de boton comida
+                //Se hace visible la foto de la comida seleccionada y las otras se hacen invisibles
                 precioPostre.setText(s1);
                 imaTiramisu.setVisible(false);
                 imaFlan.setVisible(false);
@@ -123,9 +132,10 @@ public class Postres extends JFrame {
             }
         });
 
-        añadir.addActionListener(new ActionListener() {
+        añadir.addActionListener(new ActionListener() {//Accion de Seleccionar
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                //Creacion de Files
                 File fileFactura = new File("/home/nescanpac/IdeaProjects/DONGIVANNI/Ficheros/Factura.txt");
                 File filePrecio = new File("/home/nescanpac/IdeaProjects/DONGIVANNI/Ficheros/precios.txt");
                 FileWriter escribeFactura = null;
@@ -134,23 +144,23 @@ public class Postres extends JFrame {
                 try {
                     escribePrecio = new FileWriter(filePrecio);
                     escribeFactura = new FileWriter(fileFactura);
-                    if (tiramisu.isSelected()) {
+                    if (tiramisu.isSelected()) {//Escritura del texto y el precio en los ficheros
                         escribeFactura.write("1 Tiramisú......... 4.45€");
                         escribePrecio.write("4.45");
                     }
-                    if (flan.isSelected()) {
+                    if (flan.isSelected()) {//Escritura del texto y el precio en los ficheros
                         escribeFactura.write("1 Flan......... 3.70€");
                         escribePrecio.write("3.70");
                     }
-                    if (coulant.isSelected()) {
+                    if (coulant.isSelected()) {//Escritura del texto y el precio en los ficheros
                         escribeFactura.write("1 Coulant......... 5.40€");
                         escribePrecio.write("5.40");
                     }
-                    if (natillas.isSelected()) {
+                    if (natillas.isSelected()) {//Escritura del texto y el precio en los ficheros
                         escribeFactura.write("1 Natillas......... 4.10€");
                         escribePrecio.write("4.10");
                     }
-                    if (helado.isSelected()) {
+                    if (helado.isSelected()) {//Escritura del texto y el precio en los ficheros
                         escribeFactura.write("1 Helado......... 2.00€");
                         escribePrecio.write("2.00");
                     }
@@ -164,6 +174,8 @@ public class Postres extends JFrame {
                 dispose();
             }
         });
+
+        //Adds en el panel
         panel.setLayout(null);
         panel.add(tiramisu);
         panel.add(flan);

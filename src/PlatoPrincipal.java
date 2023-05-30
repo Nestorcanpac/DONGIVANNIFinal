@@ -13,16 +13,18 @@ import java.io.IOException;
 
 public class PlatoPrincipal extends JFrame {
     public PlatoPrincipal(){
-        setSize(750,400);
-        setVisible(true);
-        setTitle("Plato Principal");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setResizable(false);
-        setLocationRelativeTo(null);
-        Font fuentePrincipal= new Font("Arial",Font.ITALIC,19);
-        JPanel panel= new JPanel();
+        setSize(750,400);//Tamaño de ventana
+        setVisible(true);//La ventana es visible
+        setTitle("Plato Principal");//Titulo de la ventana
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//Comando para cuando cierres la ventana
+        setResizable(false);//No se puede redimensionar
+        setLocationRelativeTo(null);//Posicion de la ventana al ejecutar
+        Font fuentePrincipal= new Font("Arial",Font.ITALIC,19);//Fuente Principal
+        JPanel panel= new JPanel();//Asignacion del panel principal
         setContentPane(panel);
+        setIconImage(new ImageIcon("/home/nescanpac/IdeaProjects/DONGIVANNI/Fotos_Dongiovanni/Logo.jpg").getImage());//Imagen de icono de la ventana
 
+        //Creacion de los radio Button de los platos y el Button Group
         MyRadioButton sopaCastellana= new MyRadioButton("SOPA CASTELLANA",80,50,190,50);
         sopaCastellana.setFont(fuentePrincipal);
         MyRadioButton macarrones= new MyRadioButton("MACARRONES",80,100,150,50);
@@ -40,6 +42,7 @@ public class PlatoPrincipal extends JFrame {
         group.add(canelones);
         group.add(spageti);
 
+        //Creación de las imagenes
         MyImageLabel imaSopa= new MyImageLabel("/home/nescanpac/IdeaProjects/DONGIVANNI/Fotos_Dongiovanni/Platos_principales/sopa-castellana.jpg",450,60,200,200);
         imaSopa.setVisible(false);
         MyImageLabel imaLasaña= new MyImageLabel("/home/nescanpac/IdeaProjects/DONGIVANNI/Fotos_Dongiovanni/Platos_principales/lassaaaaaaa.jpg",450,60,200,200);
@@ -51,6 +54,8 @@ public class PlatoPrincipal extends JFrame {
         MyImageLabel imaCanelones= new MyImageLabel("/home/nescanpac/IdeaProjects/DONGIVANNI/Fotos_Dongiovanni/Platos_principales/canelones.jpg",450,60,200,200);
         imaCanelones.setVisible(false);
 
+
+        //Creacion de los textos para elegir opccion y el boton añadir
         String s1="Precio:";
         MyLabel precioPlatoPrincipal= new MyLabel(s1,450,260,150,50);
         Font fuentePrecio= new Font("Arial",Font.BOLD,20);
@@ -62,7 +67,7 @@ public class PlatoPrincipal extends JFrame {
 
         MyButton añadir= new MyButton("SELECCIONA",290,300,120,50);
 
-        sopaCastellana.addActionListener(new ActionListener() {
+        sopaCastellana.addActionListener(new ActionListener() {//Accion de boton comida
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 precioPlatoPrincipal.setText(s1);
@@ -74,7 +79,7 @@ public class PlatoPrincipal extends JFrame {
                 precioPlatoPrincipal.setText(precioPlatoPrincipal.getText()+" 11.19€");
             }
         });
-        spageti.addActionListener(new ActionListener() {
+        spageti.addActionListener(new ActionListener() {//Accion de boton comida
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 precioPlatoPrincipal.setText(s1);
@@ -86,7 +91,7 @@ public class PlatoPrincipal extends JFrame {
                 precioPlatoPrincipal.setText(precioPlatoPrincipal.getText()+" 9.14€");
             }
         });
-        canelones.addActionListener(new ActionListener() {
+        canelones.addActionListener(new ActionListener() {//Accion de boton comida
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 precioPlatoPrincipal.setText(s1);
@@ -99,7 +104,7 @@ public class PlatoPrincipal extends JFrame {
             }
         });
 
-        lasaña.addActionListener(new ActionListener() {
+        lasaña.addActionListener(new ActionListener() {//Accion de boton comida
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 precioPlatoPrincipal.setText(s1);
@@ -112,7 +117,7 @@ public class PlatoPrincipal extends JFrame {
             }
         });
 
-        macarrones.addActionListener(new ActionListener() {
+        macarrones.addActionListener(new ActionListener() {//Accion de boton comida
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 precioPlatoPrincipal.setText(s1);
@@ -125,9 +130,10 @@ public class PlatoPrincipal extends JFrame {
             }
         });
 
-        añadir.addActionListener(new ActionListener() {
+        añadir.addActionListener(new ActionListener() {//Accion de boton Selecciona
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                //Creacion de Files
                 File fileFactura= new File("/home/nescanpac/IdeaProjects/DONGIVANNI/Ficheros/Factura.txt");
                 File filePrecio= new File("/home/nescanpac/IdeaProjects/DONGIVANNI/Ficheros/precios.txt");
                 FileWriter escribeFactura=null;
@@ -136,23 +142,23 @@ public class PlatoPrincipal extends JFrame {
                 try {
                     escribePrecio= new FileWriter(filePrecio);
                     escribeFactura= new FileWriter(fileFactura);
-                    if(sopaCastellana.isSelected()){
+                    if(sopaCastellana.isSelected()){//Escritura del texto y el precio en los ficheros
                         escribeFactura.write("1 Sopa Castellana......... 11.19€");
                         escribePrecio.write("11.19");
                     }
-                    if(spageti.isSelected()){
+                    if(spageti.isSelected()){//Escritura del texto y el precio en los ficheros
                         escribeFactura.write("1 Spaguettis......... 9.14€");
                         escribePrecio.write("9.14");
                     }
-                    if(canelones.isSelected()){
+                    if(canelones.isSelected()){//Escritura del texto y el precio en los ficheros
                         escribeFactura.write("1 Canelones......... 12.00€");
                         escribePrecio.write("12.00");
                     }
-                    if(lasaña.isSelected()){
+                    if(lasaña.isSelected()){//Escritura del texto y el precio en los ficheros
                         escribeFactura.write("1 Lasaña......... 8.33€");
                         escribePrecio.write("8.33");
                     }
-                    if(macarrones.isSelected()){
+                    if(macarrones.isSelected()){//Escritura del texto y el precio en los ficheros
                         escribeFactura.write("1 Macarrones......... 7.45€");
                         escribePrecio.write("7.45");
                     }
@@ -160,7 +166,7 @@ public class PlatoPrincipal extends JFrame {
                     escribeFactura.close();
                     escribePrecio.close();
                 }
-                catch(IOException exception){
+                catch(IOException exception){//Excepcion Ficheros
                     System.out.println(exception.getMessage());
                 }
 
@@ -168,6 +174,7 @@ public class PlatoPrincipal extends JFrame {
             }
         });
 
+        //Adds panel
         panel.setLayout(null);
         panel.add(sopaCastellana);
         panel.add(macarrones);

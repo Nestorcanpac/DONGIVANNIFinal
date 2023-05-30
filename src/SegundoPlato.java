@@ -13,16 +13,18 @@ import java.io.IOException;
 
 public class SegundoPlato extends JFrame {
     public SegundoPlato(){
-        setSize(750,400);
-        setVisible(true);
-        setTitle("Segundo Plato");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setResizable(false);
-        setLocationRelativeTo(null);
-        Font fuentePrincipal= new Font("Arial",Font.ITALIC,19);
-        JPanel panel= new JPanel();
+        setSize(750,400);//Tamaño de ventana
+        setVisible(true);//La ventana es visible
+        setTitle("Segundo Plato");//Titulo de la ventana
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//Comando para cuando cierres la ventana
+        setResizable(false);//No se puede redimensionar
+        setLocationRelativeTo(null);//Posicion de la ventana al ejecutar
+        Font fuentePrincipal= new Font("Arial",Font.ITALIC,19);//Fuente Principal
+        JPanel panel= new JPanel();//Asignacion del panel principal
         setContentPane(panel);
+        setIconImage(new ImageIcon("/home/nescanpac/IdeaProjects/DONGIVANNI/Fotos_Dongiovanni/Logo.jpg").getImage());//Imagen de icono de la ventana
 
+        //Creacion de los radio Button de los platos y el Button Group
         MyRadioButton pizza= new MyRadioButton("PIZZA DE LA CASA",80,50,190,50);
         pizza.setFont(fuentePrincipal);
         MyRadioButton entrecot= new MyRadioButton("ENTRECOT",80,100,150,50);
@@ -40,6 +42,7 @@ public class SegundoPlato extends JFrame {
         group.add(rape);
         group.add(costillas);
 
+        //Creación de las imagenes
         MyImageLabel imaPizza= new MyImageLabel("/home/nescanpac/IdeaProjects/DONGIVANNI/Fotos_Dongiovanni/Segundos_Platos/pizza.jpg",450,60,200,200);
         imaPizza.setVisible(false);
         MyImageLabel imaEntrecot= new MyImageLabel("/home/nescanpac/IdeaProjects/DONGIVANNI/Fotos_Dongiovanni/Segundos_Platos/entrecot.jpg",450,60,200,200);
@@ -61,7 +64,7 @@ public class SegundoPlato extends JFrame {
         escoge.setFont(fuentePrecio);
         MyButton añadir= new MyButton("SELECCIONA",290,300,120,50);
 
-        pizza.addActionListener(new ActionListener() {
+        pizza.addActionListener(new ActionListener() {//Accion de boton comida
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 precioSegundoPlato.setText(s1);
@@ -73,7 +76,7 @@ public class SegundoPlato extends JFrame {
                 precioSegundoPlato.setText(precioSegundoPlato.getText()+" 9.50€");
             }
         });
-        entrecot.addActionListener(new ActionListener() {
+        entrecot.addActionListener(new ActionListener() {//Accion de boton comida
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 precioSegundoPlato.setText(s1);
@@ -85,7 +88,7 @@ public class SegundoPlato extends JFrame {
                 precioSegundoPlato.setText(precioSegundoPlato.getText()+" 13.40€");
             }
         });
-        bacalao.addActionListener(new ActionListener() {
+        bacalao.addActionListener(new ActionListener() {//Accion de boton comida
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 precioSegundoPlato.setText(s1);
@@ -97,7 +100,7 @@ public class SegundoPlato extends JFrame {
                 precioSegundoPlato.setText(precioSegundoPlato.getText()+" 11.50€");
             }
         });
-        rape.addActionListener(new ActionListener() {
+        rape.addActionListener(new ActionListener() {//Accion de boton comida
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 precioSegundoPlato.setText(s1);
@@ -109,7 +112,7 @@ public class SegundoPlato extends JFrame {
                 precioSegundoPlato.setText(precioSegundoPlato.getText()+" 14.95€");
             }
         });
-        costillas.addActionListener(new ActionListener() {
+        costillas.addActionListener(new ActionListener() {//Accion de boton comida
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 precioSegundoPlato.setText(s1);
@@ -122,9 +125,10 @@ public class SegundoPlato extends JFrame {
             }
         });
 
-        añadir.addActionListener(new ActionListener() {
+        añadir.addActionListener(new ActionListener() {//Accion de boton Añadir
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                //Creacion de Files
                 File fileFactura= new File("/home/nescanpac/IdeaProjects/DONGIVANNI/Ficheros/Factura.txt");
                 File filePrecio= new File("/home/nescanpac/IdeaProjects/DONGIVANNI/Ficheros/precios.txt");
                 FileWriter escribeFactura=null;
@@ -133,23 +137,23 @@ public class SegundoPlato extends JFrame {
                 try {
                     escribePrecio= new FileWriter(filePrecio);
                     escribeFactura= new FileWriter(fileFactura);
-                    if(pizza.isSelected()){
+                    if(pizza.isSelected()){//Escritura del texto y el precio en los ficheros
                         escribeFactura.write("1 Pizza de la Casa......... 9.50€");
                         escribePrecio.write("9.50");
                     }
-                    if(entrecot.isSelected()){
+                    if(entrecot.isSelected()){//Escritura del texto y el precio en los ficheros
                         escribeFactura.write("1 Entrecot......... 13.40€");
                         escribePrecio.write("13.40");
                     }
-                    if(bacalao.isSelected()){
+                    if(bacalao.isSelected()){//Escritura del texto y el precio en los ficheros
                         escribeFactura.write("1 Bacalao......... 11.50€");
                         escribePrecio.write("11.50");
                     }
-                    if(rape.isSelected()){
+                    if(rape.isSelected()){//Escritura del texto y el precio en los ficheros
                         escribeFactura.write("1 Rape......... 14.95€");
                         escribePrecio.write("14.95");
                     }
-                    if(costillas.isSelected()){
+                    if(costillas.isSelected()){//Escritura del texto y el precio en los ficheros
                         escribeFactura.write("1 Costillas......... 10.00€");
                         escribePrecio.write("10.00");
                     }
@@ -157,7 +161,7 @@ public class SegundoPlato extends JFrame {
                     escribeFactura.close();
                     escribePrecio.close();
                 }
-                catch(IOException exception){
+                catch(IOException exception){//Excepcion Ficheros
                     System.out.println(exception.getMessage());
                 }
 
@@ -166,7 +170,7 @@ public class SegundoPlato extends JFrame {
         });
 
 
-
+        //Adds de los paneles
         panel.setLayout(null);
         panel.add(pizza);
         panel.add(entrecot);
